@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebcamCapturer;   
 using System.Windows.Forms;
 
 namespace StudentRegistrationApplication
@@ -20,6 +21,7 @@ namespace StudentRegistrationApplication
             this.Load += monthCombo_Load;
             this.Load += yearCombo_Load;
             programComboBox_calderon_SelectedIndexChanged(null, null);
+            
 
         }
 
@@ -54,18 +56,63 @@ namespace StudentRegistrationApplication
         }
 
         private void registerButton_calderon_Click(object sender, EventArgs e)
+        {//method overloading
+            msgBoxDisplayEnrolledStudent_calderon(firstNameInput_calderon.Text, middleNameInput_calderon.Text, lastNameInput_calderon.Text, dayComboBox_calderon.Text);
+            msgBoxDisplayEnrolledStudent_calderon(firstNameInput_calderon.Text, middleNameInput_calderon.Text, lastNameInput_calderon.Text);
+            msgBoxDisplayEnrolledStudent_calderon(firstNameInput_calderon.Text, lastNameInput_calderon.Text);
+        }
+
+        private void clearButton_calderon_Click(object sender, EventArgs e)
+        {
+            firstNameInput_calderon.Text = "";
+            middleNameInput_calderon.Text = "";
+            lastNameInput_calderon.Text = "";
+            dayComboBox_calderon.Text = "-Day-";
+            monthComboBox_calderon.Text = "-Month-";
+            yearComboBox_calderon.Text = "-Year-";
+        }
+
+        private void exitButton_calderon_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void programComboBox_calderon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ArrayList courseList_calderon = new ArrayList();
+            courseList_calderon.Add("-Select a program-");
+            courseList_calderon.Add("Bachelor of Science in Computer Science");
+            courseList_calderon.Add("Bachelor of Science in Information Technology");
+            courseList_calderon.Add("Bachelor of Science in Information Systems");
+            courseList_calderon.Add("Bachelor of Science in Computer Engineering");
+            foreach (var course_calderon in courseList_calderon)
+            {
+                programComboBox_calderon.Items.Add(course_calderon);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
-            String fName_calderon, mName_calderon, lName_calderon, gender_calderon;
+        }
 
-            fName_calderon = firstNameInput_calderon.Text;
-            mName_calderon = middleNameInput_calderon.Text;
-            lName_calderon = lastNameInput_calderon.Text;
+        private void btnSelectImage_calderon_Click(object sender, EventArgs e) //method to fully display the output
+        {
+            OpenFileDialog displayPicture_calderon = new OpenFileDialog();
+            if (displayPicture_calderon.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Image browseImage_calderon = Image.FromFile(displayPicture_calderon.FileName);
+                pictureBox_calderon.Image = browseImage_calderon;
+            }
+        }
+
+        public void msgBoxDisplayEnrolledStudent_calderon(String fName_calderon, String mName_calderon, String lName_calderon, String gender_calderon)
+        {
 
             if (maleSelect_calderon.Checked)
             {
                 gender_calderon = " Male";
-            } 
+            }
             else if (femaleSelect_calderon.Checked)
             {
                 gender_calderon = "Female";
@@ -119,41 +166,19 @@ namespace StudentRegistrationApplication
                + "\nDate of birth: " + dayComboBox_calderon.Text + "/" + monthComboBox_calderon.Text + "/" + yearComboBox_calderon.Text
                + "\nProgram: " + programComboBox_calderon.Text);
             }
-
         }
-
-        private void clearButton_calderon_Click(object sender, EventArgs e)
+        
+        public void msgBoxDisplayEnrolledStudent_calderon(String fName_calderon, String mName_calderon, String lName_calderon) // displays the full name and program of the student
         {
-            firstNameInput_calderon.Text = "";
-            middleNameInput_calderon.Text = "";
-            lastNameInput_calderon.Text = "";
-            dayComboBox_calderon.Text = "-Day-";
-            monthComboBox_calderon.Text = "-Month-";
-            yearComboBox_calderon.Text = "-Year-";
+            MessageBox.Show("Student name: " + fName_calderon + " " + mName_calderon + " " + lName_calderon
+                + "\nProgram: " + programComboBox_calderon.Text);
         }
 
-        private void exitButton_calderon_Click(object sender, EventArgs e)
+        public void msgBoxDisplayEnrolledStudent_calderon(String fName_calderon, String lName_calderon)
         {
-            Close();
+            MessageBox.Show("Student name: " + fName_calderon + " " + lName_calderon
+                + "\nProgram: " + programComboBox_calderon.Text);
         }
 
-        private void programComboBox_calderon_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ArrayList courseList_calderon = new ArrayList();
-            courseList_calderon.Add("-Select a program-");
-            courseList_calderon.Add("Bachelor of Science in Computer Science");
-            courseList_calderon.Add("Bachelor of Science in Information Technology");
-            courseList_calderon.Add("Bachelor of Science in Information System");
-            courseList_calderon.Add("Bachelor of Science in Computer Engineering");
-            foreach (var course_calderon in courseList_calderon)
-            {
-                programComboBox_calderon.Items.Add(course_calderon);
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
