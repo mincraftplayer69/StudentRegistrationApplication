@@ -47,6 +47,10 @@
             this.headerTitle_calderon = new System.Windows.Forms.Label();
             this.progLabel_calderon = new System.Windows.Forms.Label();
             this.programComboBox_calderon = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnSelectImage_calderon = new System.Windows.Forms.Button();
+            this.pictureBox_calderon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_calderon)).BeginInit();
             this.SuspendLayout();
             // 
             // lastNameLabel_calderon
@@ -223,7 +227,7 @@
             // 
             this.headerTitle_calderon.AutoSize = true;
             this.headerTitle_calderon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.headerTitle_calderon.Location = new System.Drawing.Point(110, 22);
+            this.headerTitle_calderon.Location = new System.Drawing.Point(330, 27);
             this.headerTitle_calderon.Name = "headerTitle_calderon";
             this.headerTitle_calderon.Size = new System.Drawing.Size(252, 24);
             this.headerTitle_calderon.TabIndex = 19;
@@ -251,12 +255,41 @@
             this.programComboBox_calderon.TabIndex = 22;
             this.programComboBox_calderon.SelectedIndexChanged += new System.EventHandler(this.programComboBox_calderon_SelectedIndexChanged);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnSelectImage_calderon
+            // 
+            this.btnSelectImage_calderon.BackColor = System.Drawing.Color.Crimson;
+            this.btnSelectImage_calderon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectImage_calderon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSelectImage_calderon.ForeColor = System.Drawing.Color.White;
+            this.btnSelectImage_calderon.Location = new System.Drawing.Point(590, 316);
+            this.btnSelectImage_calderon.Name = "btnSelectImage_calderon";
+            this.btnSelectImage_calderon.Size = new System.Drawing.Size(174, 36);
+            this.btnSelectImage_calderon.TabIndex = 24;
+            this.btnSelectImage_calderon.Text = "&Browse";
+            this.btnSelectImage_calderon.UseVisualStyleBackColor = false;
+            this.btnSelectImage_calderon.Click += new System.EventHandler(this.btnSelectImage_calderon_Click);
+            // 
+            // pictureBox_calderon
+            // 
+            this.pictureBox_calderon.Location = new System.Drawing.Point(545, 68);
+            this.pictureBox_calderon.Name = "pictureBox_calderon";
+            this.pictureBox_calderon.Size = new System.Drawing.Size(273, 232);
+            this.pictureBox_calderon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_calderon.TabIndex = 25;
+            this.pictureBox_calderon.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(465, 612);
+            this.ClientSize = new System.Drawing.Size(855, 595);
+            this.Controls.Add(this.pictureBox_calderon);
+            this.Controls.Add(this.btnSelectImage_calderon);
             this.Controls.Add(this.programComboBox_calderon);
             this.Controls.Add(this.progLabel_calderon);
             this.Controls.Add(this.headerTitle_calderon);
@@ -279,6 +312,7 @@
             this.Name = "Form1";
             this.Text = "Student Registration";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_calderon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +338,9 @@
         private System.Windows.Forms.Label headerTitle_calderon;
         private System.Windows.Forms.Label progLabel_calderon;
         private System.Windows.Forms.ComboBox programComboBox_calderon;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnSelectImage_calderon;
+        private System.Windows.Forms.PictureBox pictureBox_calderon;
     }
 }
 
